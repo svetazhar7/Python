@@ -1,14 +1,18 @@
-def print_groups():  # эта функция если не надо подавать массив групп, хз как правильно
-    groups = {'ИВБО': 20, 'ИКБО': 20, 'ИНБО': 20}
+def print_groups():  # эта функция если не надо подавать массив групп
+    groups = {'ИВБО': 1, 'ИКБО': 33, 'ИМБО': 2, 'ИНБО': 13}
 
     for group_name, group_count in groups.items():
         print(group_name)
-
+        counterTen = 0  # счетчик для того, чтобы было по 10 групп на строку
         for i in range(1, group_count + 1):
+            counterTen += 1
+            if (group_name == 'ИКБО') and (i == 23 or i == 29):
+                continue
             print(f"{group_name}-{i:02d}-21", end=" ")
 
-            if i % 10 == 0:
+            if counterTen == 10:  # после каждой 10 группы переходим на новую стркоу
                 print()
+                counterTen = 0
 
         print("\n")
 
@@ -16,6 +20,7 @@ def print_groups():  # эта функция если не надо подава
 def print_groups1(groups):
     # Создаем словарь, где ключом является код группы, а
     # значением - список номеров групп
+    groups = sorted(groups)  # сортировка по алфавиту по названию группы
     groups_list = {}  # словарь, хранит инф. по названию
     for group in groups:
         name = group.split("-")[0]  # название группы
@@ -24,10 +29,12 @@ def print_groups1(groups):
         if name not in groups_list:  # есть ли название уже в словаре
             groups_list[name] = []  # создаем новую запись
         groups_list[name].append(f"{name}-{number}-{year}")
-
     # Сортируем группы по номеру
     for name in groups_list:
-        groups_list[name] = sorted(groups_list[name], key=lambda x: int(x.split("-")[1]))
+        groups_list[name] = sorted(
+            groups_list[name],
+            key=lambda x: int(
+                x.split("-")[1]))
 
     # Выводим группы в требуемом формате с сайта ЦАП
     for name, groups in groups_list.items():
@@ -68,9 +75,15 @@ groups = [
     'ИКБО-20-21',
     'ИКБО-21-21',
     'ИКБО-22-21',
-    'ИКБО-23-21',
     'ИКБО-24-21',
     'ИКБО-25-21',
+    'ИКБО-26-21',
+    'ИКБО-27-21',
+    'ИКБО-28-21',
+    'ИКБО-30-21',
+    'ИКБО-31-21',
+    'ИКБО-32-21',
+    'ИКБО-33-21',
     'ИНБО-01-21',
     'ИНБО-02-21',
     'ИНБО-03-21',
@@ -83,5 +96,8 @@ groups = [
     'ИНБО-10-21',
     'ИНБО-11-21',
     'ИНБО-12-21',
-    'ИНБО-13-21']
+    'ИНБО-13-21',
+    'ИМБО-01-21',
+    'ИМБО-01-21']
 print_groups1(groups)
+# print_groups()
