@@ -33,4 +33,17 @@ data = [0xE3238557, 0x6204A1F8, 0xE6537611, 0x174E5747,
         0x8DBFBFEC, 0x73C1A46E, 0xFFB06F41, 0x2AC90051,
         0x97C5E4E9, 0xB1C26A21, 0xDD4A3463, 0x6B71162F,
         0x8C075668, 0x7975D565, 0x6D95A700, 0x7272E637]
-print(decrypt(data, key))
+result=[]
+str=' '
+for i in range (0,39,2):
+    result.append(decrypt([data[i],data[i+1]], key))
+
+# преобразование чисел в символы Unicode
+decoded_text = ""
+for pair in result:
+    decoded_text += chr(pair[0]) + chr(pair[1])
+# вывод звсекреченного сообщения
+print(decoded_text)
+
+
+
