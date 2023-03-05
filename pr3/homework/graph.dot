@@ -1,0 +1,41 @@
+digraph G {
+    // Начальная комната
+    start [label="1 (Начало)",color="blue"];
+    // Комната 2
+    room2 [label="2"];
+    // Комната 3
+    room3 [label="3"];
+    // Комната 4
+    room4 [label="4"];
+    // Комната 5
+    room5 [label="5"];
+    // Комната 6
+    room6 [label="6"];
+    // Комната 7
+    room7 [label="7 (Выход)",color="green"];
+    // Комната 8
+    room8 [label="8"];
+    // Комната 9
+    room9 [label="9"];
+    // Комната 10
+    room10 [label="10"];
+    
+    // Дуги между комнатами
+    start -> room2;
+    room2 -> start;
+    room2 -> room3;
+    room3 -> room5;
+    room3 -> room2;
+    room3 -> room4;
+    room4 -> room3;
+    room5 -> room3;
+    room5 -> room6;
+    room6 -> room7;
+    room6 -> room8;
+    room6 -> room5;
+    room8 -> room6;
+    room8 -> room9;
+    room9 -> room8;
+    room9 -> room10;
+    room10 -> room9;
+}
