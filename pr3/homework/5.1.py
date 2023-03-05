@@ -25,6 +25,10 @@ def print_groups1(groups):
             groups_list[name] = []  # создаем новую запись
         groups_list[name].append(f"{name}-{number}-{year}")
 
+    # Сортируем группы по номеру
+    for name in groups_list:
+        groups_list[name] = sorted(groups_list[name], key=lambda x: int(x.split("-")[1]))
+
     # Выводим группы в требуемом формате с сайта ЦАП
     for name, groups in groups_list.items():
         print(name)  # вывод названия
