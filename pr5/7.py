@@ -61,14 +61,28 @@ def algmatrix(A):
             result[i][j] = alg(A, i, j)
     return result
 
+def transpose(A):
+    n = len(A)
+    m = len(A[0])
+    # Создаем новую матрицу
+    new_A = []
+    for j in range(m):
+        new_row = []
+        for i in range(n):
+            new_row.append(A[i][j])
+        new_A.append(new_row)
+    return new_A
+
 def inv(A):
     n = len(A)
     det_A = det(A)
     if det_A == 0:
         raise ValueError("Матрица вырожденная, обратной не существует")
-    alg_A_T = [[alg(A, j, i) for i in range(n)] for j in range(n)]
-    inv_A = [[alg_A_T[i][j] / det_A for j in range(n)] for i in range(n)]
+    algmatrix_A_T = algmatrix(transpose(A))
+    inv_A = [[algmatrix_A_T[i][j] / det_A for j in range(n)] for i in range(n)]
     return inv_A
+
+
 
 A =[[0,2,1,4],[1,0,3,2],[0,1,4,0],[1,2,1,1]]
 print(inv(A))
