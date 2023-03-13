@@ -95,6 +95,8 @@ def matrix_multiply(A, B):
             for k in range(n):
                 C[i][j] += A[i][k] * B[k][j]
     return C
+
+
 def moon_penrose(H):
     #транспонирование H
     H_T =  transpose(H)
