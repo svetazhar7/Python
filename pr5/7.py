@@ -74,6 +74,7 @@ def transpose(A):
     return new_A
 
 
+
 def inv(A):
     n = len(A)
     det_A = det(A)
