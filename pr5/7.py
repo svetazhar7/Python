@@ -73,6 +73,7 @@ def transpose(A):
         new_A.append(new_row)
     return new_A
 
+
 def inv(A):
     n = len(A)
     det_A = det(A)
